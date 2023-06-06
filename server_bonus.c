@@ -6,7 +6,7 @@
 /*   By: dagoncal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:18:03 by dagoncal          #+#    #+#             */
-/*   Updated: 2023/05/29 22:34:12 by dagoncal         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:47:06 by dagoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@ void	error(int pid, char *str)
 {
 	if (str)
 		free(str);
-	ft_putstr("server: Unexpected error\n");
+	ft_printf("server: Unexpected error\n");
 	kill(pid, SIGUSR2);
 	exit(EXIT_FAILURE);
 }
 
 char	*print_string(char *str)
 {
-	ft_putstr(str);
-	ft_putstr("\n");
+	ft_printf("%s", str);
 	free(str);
 	return (NULL);
 }
@@ -40,9 +39,9 @@ void	handler_sigusr(int signum, siginfo_t *info, void *context)
 	if (info->si_pid)
 		pid = info->si_pid;
 	if (signum == SIGUSR1)
-		c ^= 0x80 >> bits;
-	else if (signum == SIGUSR2)
 		c |= 0x80 >> bits;
+	else if (signum == SIGUSR2)
+		c ^= 0x80 >> bits;
 	if (++bits == 8)
 	{
 		if (c)
@@ -72,9 +71,7 @@ int	main(void)
 	sigaction(SIGUSR1, &sa_signal, NULL);
 	sigaction(SIGUSR2, &sa_signal, NULL);
 	pid = getpid();
-	ft_putstr("PID: ");
-	ft_putnbr(pid);
-	ft_putstr("\n");
+	ft_printf("PID: %i\n", pid);
 	while (1)
 		pause();
 }

@@ -6,7 +6,7 @@
 /*   By: dagoncal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:18:03 by dagoncal          #+#    #+#             */
-/*   Updated: 2023/05/30 16:44:04 by dagoncal         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:07:31 by dagoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,8 @@
 
 void	error()
 {
-	ft_putstr("server: Unexpected error\n");
+	ft_printf("server: Unexpected error\n");
 	exit(EXIT_FAILURE);
-}
-
-void	print_char(char c)
-{
-	write(1, &c, 1);
-	if (c == '\0')
-		ft_putstr("\n");
 }
 
 void	handler_sigusr(int signum)
@@ -37,7 +30,7 @@ void	handler_sigusr(int signum)
 	bits++;
 	if (bits == 8)
 	{
-		print_char(c);
+		write(1, &c, 1);
 		bits = 0;
 		c = 0;
 	}
@@ -48,13 +41,11 @@ int	main(void)
 	__pid_t	pid;
 
 	pid = getpid();
-	ft_putstr("PID: ");
-	ft_putnbr(pid);
-	ft_putstr("\n");
+	ft_printf("PID: %i\n", pid);
 	while (1)
 	{
 		signal(SIGUSR1, handler_sigusr);
 		signal(SIGUSR2, handler_sigusr);
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

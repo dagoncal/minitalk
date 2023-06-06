@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagoncal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 22:18:07 by dagoncal          #+#    #+#             */
-/*   Updated: 2023/06/06 16:35:49 by dagoncal         ###   ########.fr       */
+/*   Created: 2023/02/15 19:01:20 by dagoncal          #+#    #+#             */
+/*   Updated: 2023/02/21 12:45:50 by dagoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "ft_printf.h"
 
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <ft_printf.h>
+size_t	ft_putstr(char *str)
+{
+	size_t	i;
 
-size_t	ft_strlen(const char *str);
-
-char	*ft_straddc_first(char c);
-char	*ft_straddc(char *str, char c);
-char	*ft_strdup(const char *str);
-
-int		ft_isdigit(int c);
-int		ft_atoi(const char *nptr);
-
-#endif
+	i = 0;
+	if (str == NULL)
+		return (write(1, "(null)", 6));
+	while (str[i] != '\0')
+		ft_putchar(str[i++]);
+	return (i);
+}
