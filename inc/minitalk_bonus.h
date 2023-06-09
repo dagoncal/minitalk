@@ -6,12 +6,12 @@
 /*   By: dagoncal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:18:07 by dagoncal          #+#    #+#             */
-/*   Updated: 2023/06/06 16:44:56 by dagoncal         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:17:28 by dagoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_BONUSH
-# define MINITALK_BONUSH
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
 # include <signal.h>
 # include <unistd.h>

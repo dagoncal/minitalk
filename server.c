@@ -6,13 +6,13 @@
 /*   By: dagoncal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:18:03 by dagoncal          #+#    #+#             */
-/*   Updated: 2023/06/06 16:07:31 by dagoncal         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:16:43 by dagoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	error()
+void	error(void)
 {
 	ft_printf("server: Unexpected error\n");
 	exit(EXIT_FAILURE);
@@ -21,7 +21,7 @@ void	error()
 void	handler_sigusr(int signum)
 {
 	static unsigned char	c = 0;
-	static int	bits = 0 ;
+	static int				bits = 0 ;
 
 	if (signum == SIGUSR1)
 		c = (c << 1) | 0b00000001;

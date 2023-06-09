@@ -20,7 +20,7 @@ SRCS = 	utils/ft_atoi.c \
   		utils/ft_strlen.c
 OBJS = ${SRCS:.c=.o}
 UTILS = libutilsminitalk.a
-NAME = $(CLIENT) $(SERVER)
+NAME = minitalk
 LIBC = ar rc
 LIBR = ranlib
 
@@ -29,9 +29,9 @@ RM = rm -f
 .c.o:
 	${CC} ${CFLAGS} -I $(INC) -I $(FT_PRINTF_DIR) -c $< -o ${<:.c=.o}
 
-all: mandatory
+all: $(NAME)
 
-mandatory: utils
+$(NAME): utils
 	$(CC) $(CFLAGS) -I $(INC) -I $(FT_PRINTF_DIR) $(SRC_C) $(UTILS) $(FT_PRINTF) -o $(CLIENT)
 	$(CC) $(CFLAGS) -I $(INC) -I $(FT_PRINTF_DIR) $(SRC_S) $(UTILS) $(FT_PRINTF) -o $(SERVER)
 

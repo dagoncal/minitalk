@@ -6,13 +6,13 @@
 /*   By: dagoncal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 22:18:00 by dagoncal          #+#    #+#             */
-/*   Updated: 2023/06/06 16:06:11 by dagoncal         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:16:53 by dagoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	error()
+void	error(void)
 {
 	ft_printf("client: Unexpected error\n");
 	exit(EXIT_FAILURE);
